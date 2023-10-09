@@ -1,0 +1,35 @@
+# Function to extract key-value pairs from a nested dictionary
+def get_key_value_pairs(dictionary, parent_key=''):
+    # Extract key-value pairs from the current dictionary level
+    key_value_pairs = [
+        (f"{parent_key}.{key}" if parent_key else key, value)
+        for key, value in dictionary.items()
+    ]
+
+    # Recursively extract key-value pairs from nested dictionaries
+    nested_pairs = [
+        pair
+        for key, value in dictionary.items()
+        if isinstance(value, dict)
+        for pair in get_key_value_pairs(value, key)
+    ]
+
+    # Combine and return the key-value pairs from current and nested levels
+    return key_value_pairs + nested_pairs
+
+# Example dictionary with nested structure
+my_dict = {
+    "name": "Chandana Suryadevara",
+    "age": 24,
+    "address": {
+        "street": "174 Lamson",
+        "city": "West Haven"
+    }
+}
+
+# Extract key-value pairs from the dictionary
+result = get_key_value_pairs(my_dict)
+
+# Display extracted key-value pairs
+for key, value in result:
+    print(f"{key}: {value}")

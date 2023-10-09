@@ -1,0 +1,59 @@
+# Contact class definition
+class Contact:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+    def set_email(self, email):
+        self.email = email
+
+    def get_email(self):
+        return self.email
+
+
+# StudentContact class definition, subclass of Contact
+class StudentContact(Contact):
+    def __init__(self, name, email, number_of_courses, major, career_interest):
+        super().__init__(name, email)
+        self.number_of_courses = number_of_courses
+        self.major = major
+        self.career_interest = career_interest
+
+    def set_number_of_courses(self, number_of_courses):
+        self.number_of_courses = number_of_courses
+
+    def get_number_of_courses(self):
+        return self.number_of_courses
+
+    def set_major(self, major):
+        self.major = major
+
+    def get_major(self):
+        return self.major
+
+    def set_career_interest(self, career_interest):
+        self.career_interest = career_interest
+
+    def get_career_interest(self):
+        return self.career_interest
+
+
+# Input: Number of Courses
+Number_of_courses = int(input("Enter the number of courses: 1,2 or 3 "))
+
+# Create a StudentContact instance
+student = StudentContact("Cahndana", "chandanasuryadevara3@gmail.com", Number_of_courses, "Computer Science", "Software Development")
+
+# Output: Student Information
+print("\nStudent Information:")
+print(f"Name: {student.get_name()}")
+print(f"Email: {student.get_email()}")
+print(f"Number of Courses: {student.get_number_of_courses()}")
+print(f"Major: {student.get_major()}")
+print(f"Career Interest: {student.get_career_interest()}")
